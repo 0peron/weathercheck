@@ -28,7 +28,7 @@ const weatherData = (stateName, cityName) => {
 };
 
 const WEATHER_SUCCESS = 'WEATHER_SUCCESS';
-const weatherSuccess = (cityName, forecast) => ({
+export const weatherSuccess = (cityName, forecast) => ({
         type: WEATHER_SUCCESS,
         cityName: cityName,
         forecast: forecast

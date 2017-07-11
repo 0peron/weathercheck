@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { weatherSuccess } from '../..actions/index';
 
 const WeatherSearch = ({ weatherSearch }) => (
         <div className="weatherSearch">
@@ -69,7 +70,10 @@ const WeatherSearch = ({ weatherSearch }) => (
         <button type="submit" ref="forecastSearch" className="forecastSearch">Search</button>
         </form>
         </div>
-    )
-}
+    );
 
-export default WeatherSearch
+const mapDistpatchtoProps = (dispatch) => ({
+    weatherSearch: (cityName, forecast) => dispatch(weatherSuccess(cityName, forecast))
+})
+
+export default connect(null, mapDistpatchtoProps)(WeatherSearch);
