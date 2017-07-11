@@ -1,4 +1,5 @@
-const weatherData = (stateName, cityName) => {
+
+export const fetchWeatherData = (stateName, cityName) => {
     return function(dispatch) {
         var apiKey = '070d4f7d9e1206a5';
         var query = (stateName + "/" + cityName);
@@ -7,12 +8,11 @@ const weatherData = (stateName, cityName) => {
         return fetch(url, {
             method: 'GET',
         })
-
             .then(function(response) {
             return response.json();
         })
             .then(function(data) {
-            console.log('this is data', data);
+            console.log('this data', data);
             var forecast = data.forecast.simpleforecast.forecastday;
             return dispatch(
                 weatherSuccess(cityName, forecast)
@@ -20,9 +20,6 @@ const weatherData = (stateName, cityName) => {
         })
             .catch(function(error) {
             console.log('catch', error);
-            return dispatch(
-                fetchIdError(cityName, error)
-            );
         });
     };
 };

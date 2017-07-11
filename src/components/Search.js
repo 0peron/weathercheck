@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { weatherSuccess } from '../..actions/index';
+import { fetchWeatherData } from '../actions/index';
 
 const WeatherSearch = ({ weatherSearch }) => (
         <div className="weatherSearch">
         <form onSubmit={(event) => {
     event.preventDefault();
-    let js-query = event.target.js-query.val;
-    WeatherSearch(js-query);
-    event.target.js-query.val = '';
+    let jsQuery = event.target.jsQuery.val;
+    WeatherSearch(jsQuery);
+    event.target.jsQuery.val = '';
 }} action="#" className="js-search-form">
         <h1>Weather Check</h1>
         <h4>Select State and City</h4>
@@ -66,14 +66,14 @@ const WeatherSearch = ({ weatherSearch }) => (
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
         </select>
-        <input type="text" className="js-query" placeholder="City" ref="cityName" />
+        <input type="text" className="jsQuery" placeholder="City" ref="cityName" />
         <button type="submit" ref="forecastSearch" className="forecastSearch">Search</button>
         </form>
         </div>
     );
 
 const mapDistpatchtoProps = (dispatch) => ({
-    weatherSearch: (cityName, forecast) => dispatch(weatherSuccess(cityName, forecast))
+    weatherSearch: (cityName, forecast) => dispatch(fetchWeatherData(cityName, forecast))
 })
 
 export default connect(null, mapDistpatchtoProps)(WeatherSearch);
