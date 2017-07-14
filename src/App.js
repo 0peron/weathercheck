@@ -4,12 +4,14 @@ import Results from './components/Results'
 
 
 class App extends Component {
-render(){
-    return(
-        <div>
-        <WeatherSearch />
-        <Results />
-        </div>
-    )
+  render() {
+      return(
+          <div>
+            <WeatherSearch />
+            <Results />
+          </div>
+      )
+  }
 }
-}
+
+export default App
