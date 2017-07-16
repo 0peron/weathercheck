@@ -8,7 +8,7 @@ const WeatherSearch = ({ weatherSearch }) => (
             event.preventDefault();
             let stateName = event.target.stateName.value;
             let cityName = event.target.cityName.value;
-            WeatherSearch(cityName, stateName);
+            weatherSearch(cityName, stateName);
             event.target.cityName.value = '';
             event.target.stateName.value= '';
             console.log(cityName, stateName);
@@ -76,7 +76,7 @@ const WeatherSearch = ({ weatherSearch }) => (
 );
 
 const mapDistpatchtoProps = (dispatch) => ({
-    weatherSearch: (cityName, stateName) => dispatch(fetchWeatherData(cityName, stateName))
+    weatherSearch: (cityName, stateName) => dispatch(fetchWeatherData(stateName, cityName))
 });
 
 export default connect(null, mapDistpatchtoProps)(WeatherSearch);
