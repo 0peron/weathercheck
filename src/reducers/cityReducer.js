@@ -1,17 +1,26 @@
 const initialWeatherState = {
+    loading: true,
     cityName: '',
-    forecast: {}
+    forecast: []
 };
 
 
 const cityReducer = (state = initialWeatherState, action) => {
-    if (action.type === 'WEATHER_SUCCESS') {
+    if (action.type === 'REQUEST_DATA') {
         return {
             ...state,
-            cityName: action.cityName,
-            forecast: action.forecast
+            loading: true
         }
     }
+    else if (action.type === 'WEATHER_SUCCESS') {
+        return {
+            ...state,
+            loading: false,
+            forecast: action.forecast,
+            cityName: action.cityName
+        }
+    }
+
     else{
         return state;
     }
